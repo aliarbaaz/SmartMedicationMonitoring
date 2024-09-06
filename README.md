@@ -13,6 +13,9 @@ The Smart Medication Monitoring System is an IoT-based Android application desig
 - **Emergency Alerts**: Provides emergency notifications based on sensor data.
 - **Pills Status**: Shows whether the patient has taken their medication or not.
 
+## Screenshots
+<img src="https://github.com/user-attachments/assets/96a65990-bc6e-486f-aca1-5afb83d92f16" width="200" height="400"  alt="Home Screen"/>
+
 ## Getting Started
 
 ### Prerequisites
