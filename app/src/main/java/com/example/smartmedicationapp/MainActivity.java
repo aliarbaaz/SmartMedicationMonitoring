@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -109,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
                             // Check if feeds array is empty
                             if (feeds.length() == 0) {
-                                title.setText("No data available");
+                                Toast.makeText(getApplicationContext(), "No data available", Toast.LENGTH_LONG).show();
                                 return;
                             }
 
-                            // Get the latest feed (assumes that the latest entry is the first one)
-                            JSONObject latestFeed = feeds.getJSONObject(feeds.length() - 3);
+                            // Get the latest feed
+                            JSONObject latestFeed = feeds.getJSONObject(feeds.length() - 1);
 
                             String field1 = latestFeed.optString("field1", "N/A");
                             String field2 = latestFeed.optString("field2", "N/A");
@@ -221,14 +223,14 @@ public class MainActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            title.setText("Error parsing data");
+                            Toast.makeText(getApplicationContext(), "Error parsing data", Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        title.setText("Error fetching data");
+                        Toast.makeText(getApplicationContext(), "Error fetching data", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -255,8 +257,6 @@ public class MainActivity extends AppCompatActivity {
             Log.e("MediaPlayer", "Error initializing MediaPlayer", e);
         }
     }
-
-
 
     private String getTime(String timestamp) {
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
